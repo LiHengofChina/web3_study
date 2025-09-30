@@ -1,0 +1,52 @@
+
+HTTPS 就是带有安全层的 HTTP，
+使用 "加密" 和 "身份验证" 来保护 "通信的安全"，
+常见于 "登录页面"、支付网站等敏感信息传输场景。
+
+
+
+//=============================================== 什么是HTTPS？
+//=============================================== 什么是HTTPS？
+
+HTTPS（HyperText Transfer Protocol Secure）是 HTTP 的安全版本
+
+它通过 "SSL/TLS协议" 来加密通信
+
+确保数据在 "客户端（浏览器）和服务器" 之间传输时的 "安全性和隐私性"。
+
+
+//=============================================== 关键点：
+//=============================================== 关键点：
+
+（1）加密通信：HTTPS 使用SSL/TLS加密，防止数据被中途窃听或篡改。
+（2）身份验证：通过数字证书验证服务器的身份，确保客户端连接的是合法的服务器。
+（3）数据完整性：确保数据在传输过程中不会被篡改。
+
+
+
+//=============================================== 什么是HTTPS？
+//=============================================== 什么是HTTPS？
+
+
+HTTPS 协议
+
+
+6).强制HTTPS访问	
+ 
+  <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>SSL</web-resource-name>
+            <url-pattern>/*</url-pattern><!-- 全站使用SSL -->
+        </web-resource-collection>
+        <user-data-constraint>
+            <description>SSL required</description>
+            <!-- CONFIDENTIAL: 确保传输数据不被修改，不能被查看 -->
+            <!-- INTEGRAL: 确保传输数据不被修改 -->
+            <!-- NONE: 不做特殊限制-->
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>	
+
+
+
+

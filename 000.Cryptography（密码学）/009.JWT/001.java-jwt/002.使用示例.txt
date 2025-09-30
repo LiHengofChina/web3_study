@@ -1,0 +1,68 @@
+
+//======================================================== maven项目引入
+//======================================================== maven项目引入
+
+  <dependencies>
+      <!-- JJWT 依赖项 -->
+      <dependency>
+          <groupId>io.jsonwebtoken</groupId>
+          <artifactId>jjwt-api</artifactId>
+          <version>0.11.5</version>
+      </dependency>
+      <dependency>
+          <groupId>io.jsonwebtoken</groupId>
+          <artifactId>jjwt-impl</artifactId>
+          <version>0.11.5</version>
+          <scope>runtime</scope>
+      </dependency>
+      <dependency>
+          <groupId>io.jsonwebtoken</groupId>
+          <artifactId>jjwt-jackson</artifactId> <!-- 如果你更喜欢使用 Gson，可以用 jjwt-gson -->
+          <version>0.11.5</version>
+          <scope>runtime</scope>
+      </dependency>
+
+      <!-- Jackson 依赖项 -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.15.2</version>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <version>2.15.2</version>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+          <version>2.15.2</version>
+      </dependency>
+  </dependencies>
+
+
+在
+/**
+（1）jjwt-api: 这是 JWT 库的核心 API，包含生成和解析 JWT 所需的基本接口和类。
+（2）jjwt-impl: 这个依赖包含了 jjwt-api 的实现，在运行时加载。它包括了实际的 JWT 处理逻辑。
+（3）jjwt-jackson: 这个依赖允许 JWT 使用 Jackson 作为 JSON 序列化和反序列化库。如果你更喜欢 Gson，也可以用 jjwt-gson 替代。
+*/
+
+
+//======================================================== setClaims 
+//======================================================== setClaims 
+
+setClaims 方法允许你一次性设置一个包含多个 claims 的 Map 对象。
+这个方法会替换现有的所有 claims，通常用于设置复杂或自定义的 claims。
+
+（1）setClaims 方法允许你一次性设置一个包含多个 claims 的 Map 对象。
+	 这个方法会替换现有的所有 claims，通常用于设置复杂或自定义的 claims。
+（2）Claims 通常包含标准的字段（如 sub、iss、exp 等），也可以包含自定义字段。标准的 claims 通常有：
+
+	iss: Issuer - JWT 的签发者。
+	sub: Subject - JWT 的主题，通常是用户的唯一标识。
+	exp: Expiration - JWT 的过期时间。
+	iat: Issued At - JWT 的签发时间。
+	aud: Audience - JWT 的接收者，通常是服务的标识。
+
+

@@ -1,0 +1,19 @@
+
+如果请求先经过 Nginx，然后再转发到 Tomcat，
+通常SSL 证书应该配置在 Nginx 上，而 Tomcat 不再需要配置 SSL。
+
+
+//================================= 具体流程：
+//================================= 具体流程：
+
+（1）Nginx 作为反向代理：
+	 （1）Nginx 处理来自客户端的 HTTPS 请求，SSL 证书会配置在 Nginx 上，负责与客户端之间的加密通信。
+			//Nginx 负责处理客户端的 HTTPS 请求。
+
+	 （2） Nginx 解密 HTTPS 请求后，将请求通过 HTTP 或者 HTTPS 转发给 Tomcat。
+
+
+（2）Tomcat 不需要 SSL 配置：
+	 （1）因为 Nginx 已经处理了 SSL 加密，转发给 Tomcat 的请求可以是明文的 HTTP 请求，所以 Tomcat 不需要配置 SSL。
+	 （2）Nginx 和 Tomcat 可以通过 HTTP 通信，SSL 加密只在客户端和 Nginx 之间进行。
+

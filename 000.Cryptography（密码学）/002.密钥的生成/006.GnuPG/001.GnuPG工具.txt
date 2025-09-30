@@ -1,0 +1,126 @@
+//================================== 生成 OpenPGP 公钥：
+//================================== 生成 OpenPGP 公钥：
+
+可以通过 gpg 命令生成 GPG 密钥对
+
+这是 GnuPG（GNU Privacy Guard）提供的一种常用工具。
+gpg 是 PGP 的开源实现，支持生成、管理和使用 PGP/GPG 密钥对。
+
+//===============  （1）生成 GPG 密钥对
+//===============  （1）生成 GPG 密钥对
+gpg --gen-key
+gpg --full-generate-key //完整选项
+		
+
+		//========== 吊销证书 示例
+		//========== 吊销证书 示例
+		rev 文件是 吊销证书（Revocation Certificate）。
+		这个文件允许你在密钥丢失或泄露的情况下撤销（吊销）该密钥，以防止他人继续使用它。
+		/home/liheng/.gnupg/openpgp-revocs.d/05A6214C6015043732A7E218A244C506EECF1BFD.rev
+
+
+		/**
+
+		当你运行 gpg --gen-key 时，你需要提供以下信息：
+			密钥类型: RSA and RSA
+			密钥大小：2048 或 4096 位
+			密钥有效期: 可以选择密钥的有效期，例如 0 表示永不过期。
+			用户信息（User ID）: 你需要输入用户信息，通常包括：
+			密码短语: 设置一个保护私钥的密码。
+		*/
+
+//===============  （2）查看生成的密钥
+//===============  （2）查看生成的密钥
+
+（1）查看公钥
+gpg --list-keys
+			/** 示例
+				liheng@liheng-VirtualBox:~/.gnupg/openpgp-revocs.d$ gpg --list-keys
+				/home/liheng/.gnupg/pubring.kbx
+				-------------------------------
+
+				pub   rsa3072 2024-09-19 [SC]
+					  05A6214C6015043732A7E218A244C506EECF1BFD
+				uid             [ 绝对 ] liheng (ok) <13688007165@139.com>
+				sub   rsa3072 2024-09-19 [E]
+			*/
+			/**说明：
+
+				//=========公钥 
+
+				指纹: 05A6214C6015043732A7E218A244C506EECF1BFD
+				用户 ID: liheng (ok) <13688007165@139.com>
+				类型: rsa3072，加密算法为 RSA，密钥长度为 3072 位
+				主密钥用途: SC（用于签名和认证）
+				子密钥用途: E（用于加密）
+				没有指定有效期
+				
+				//建了多个 GPG 密钥对，每个密钥对有不同的指纹（Fingerprint），
+				其中用户 ID 有些是相同的（如 liheng <13688007165@139.com>），
+
+			*/
+
+（2）查看私钥
+gpg --list-secret-keys
+
+
+
+
+
+
+//===============  （3）删除密钥
+//===============  （3）删除密钥
+
+
+（1）先删除私钥，再删除公钥
+
+	gpg --delete-secret-key 3F03EB86DACF2E2438E2F28DC3B7D7B5691F2E0D		//删除公钥
+	gpg --delete-key 3F03EB86DACF2E2438E2F28DC3B7D7B5691F2E0D				//删除私钥
+
+	 
+//===============  （4）导出公钥（只会匹配第一个user-id的 ）
+//===============  （4）导出公钥（只会匹配第一个user-id的 ）
+
+生成密钥后，你可以将公钥导出为 .asc 文件（ASCII 装甲格式），用于与其他人分享：
+
+gpg --armor --export <user-id> > publicKey.asc
+			/**
+			其中 <user-id> 可以是你在生成密钥时输入的电子邮件地址或密钥的标识符。例如：
+			gpg --armor --export 13688007165@139.com > publicKey.asc
+
+			这会生成一个包含公钥的 publicKey.asc 文件，内容类似如下：
+			-----BEGIN PGP PUBLIC KEY BLOCK-----
+			...
+			-----END PGP PUBLIC KEY BLOCK-----
+			*/
+
+//===============  （5）导出私钥（只会匹配第一个user-id的 ）
+//===============  （5）导出公钥（只会匹配第一个user-id的 ）
+
+gpg --armor --export-secret-keys <user-id> > privateKey.asc
+			/**	
+				//导出私钥需要输入密码
+				gpg --armor --export-secret-keys 13688007165@139.com > privateKey.asc
+			*/
+
+
+
+//===============  （5）导入密钥
+//===============  （5）导入密钥
+
+你也可以导入他人的公钥或备份的密钥。使用以下命令导入 .asc 文件：
+
+gpg --import publicKey.asc
+
+//===============  （6）加密和解密
+//===============  （6）加密和解密
+你可以使用生成的密钥对进行文件加密和解密。
+
+加密文件：
+gpg --output encrypted_file.gpg --encrypt --recipient <user-id> file.txt
+
+解密文件：
+gpg --output decrypted_file.txt --decrypt encrypted_file.gpg
+
+
+

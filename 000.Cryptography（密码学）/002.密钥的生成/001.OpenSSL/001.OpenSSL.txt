@@ -1,0 +1,55 @@
+
+
+//======================================================================= 使用 OpenSSL 生成密钥对
+//======================================================================= 使用 OpenSSL 生成密钥对
+
+OpenSSL 是一个广泛使用的工具，能够生成 RSA 和 ECC 密钥对。//非对称
+
+
+//======================================================================= RSA 算法
+//======================================================================= RSA 算法
+
+
+
+生成私钥（私钥保存在 private_key.pem 文件中）
+
+（1）生成私钥//（私钥保存在 private_key.pem 文件中）：
+
+
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+
+（2）生成公钥//（从私钥导出公钥，保存在 public_key.pem 文件中）：
+
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+
+//======================================================================= ECC 算法
+//======================================================================= ECC 算法
+
+（1）生成 ECC 私钥//（保存在 ecc_private_key.pem 文件中）：
+
+openssl ecparam -genkey -name prime256v1 -out ecc_private_key.pem
+
+-----BEGIN EC PARAMETERS-----
+BggqhkjOPQMBBw==
+-----END EC PARAMETERS-----
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIA2cli61lYSuqkVEiJ8EkU/eVFGMG+pVDnTruiIHsHBVoAoGCCqGSM49
+AwEHoUQDQgAEDSl7Bxm9WkosepjAwHHfJyZQHvM/g2dk7CGmpqn9GUvDadRsAiWn
+3jzuJLw9S7xhS4vQBJNnxSlhYMQdYGOV3g==
+-----END EC PRIVATE KEY-----
+
+（2）生成 ECC 公钥（从私钥导出公钥，保存在 ecc_public_key.pem 文件中）：
+
+openssl ec -in ecc_private_key.pem -pubout -out ecc_public_key.pem
+
+
+-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEDSl7Bxm9WkosepjAwHHfJyZQHvM/
+g2dk7CGmpqn9GUvDadRsAiWn3jzuJLw9S7xhS4vQBJNnxSlhYMQdYGOV3g==
+-----END PUBLIC KEY-----
+
+
+
+
+

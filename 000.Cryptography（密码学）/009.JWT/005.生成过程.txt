@@ -1,0 +1,33 @@
+//================================================== 生成过程 
+//================================================== 生成过程 
+（1）Header和Payload
+		Header和Payload 经过 Base64URL 编码的。
+
+（2） Signature 部分的生成
+	 （1）将 Header 和 Payload 分别进行 Base64URL 编码，并用 . 连接起来。
+			形成：base64UrlEncode(header) + "." + base64UrlEncode(payload)
+
+     （2）使用指定的 签名算法（如 HS256、RS256 等）和 签名密钥，对上面生成的字符串进行签名。
+
+	 （3）签名结果也会进行 Base64URL 编码，形成最终的 Signature。
+
+		//Signature = base64UrlEncode( HMACSHA256( base64UrlEncode(header) + "." + base64UrlEncode(payload), secret ) )
+
+//================================================== 所以
+//================================================== 所以
+
+（1）只有拥有 公钥 或 共享密钥 的人，
+	 才能验证 JWT 的 签名 以确定它的内容是否完整和真实，防止数据被篡改。
+
+（2）而任何人都可以通过 Base64URL 解码 来查看 Header 和 Payload 的内容，
+	 但无法验证其真实性或完整性，也无法生成有效的签名。
+
+//================================================== 示例：
+//================================================== 示例：
+
+eyJhbGciOiJFUzI1NiJ9.eyJzdWIiOiIvd29ya3N0YXRpb24vYXBwcm92YWwvbXktYXBwcm92YWxzL3BlbmRpbmcvcHJvamVjdC1pbml0aWF0aW9uLWFwcHJvdmFsLzdiODNiZWEzLTc1OGItMTFlZi1iMWE2LTAwNTA1NmE3ZjRjOS9jN2JlZDAwODY3NDc0ODU4ODA4YjA1MTIxNWQ5NDI1NS9sZWFzZV9hcHByb3ZlX2Zsb3cveHVlYmVpYmVpL3ByaW1hcnlfc3VwcGxlbWVudF9kYXRhLyVFNyVBQiU4QiVFOSVBMSVCOSVFNSVBRSVBMSVFNiU4OSVCOSJ9.6nnI1d8dQEH_T0FCZroD6SeyrQqAHbvyqXMU3rAAWegdInoN_OH912sNyv2hkzLlx9-Szxjd9MVq_1cu_fhmSw
+
+
+
+
+

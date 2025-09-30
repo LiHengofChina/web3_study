@@ -1,0 +1,25 @@
+
+
+
+
+
+
+
+
+
+（1）将 PEM 私钥转换为 DER 格式：
+		openssl rsa -in private_key.pem -outform DER -out private_key.der
+
+
+
+
+
+
+
+
+（2）将 PEM 公钥转换为 DER 格式：
+		openssl rsa -in public_key.pem -pubout -outform DER -out public_key.der
+
+
+
+

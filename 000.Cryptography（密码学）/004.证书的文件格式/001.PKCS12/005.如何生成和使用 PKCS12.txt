@@ -1,0 +1,14 @@
+
+//==================================
+//==================================
+
+使用 OpenSSL 生成 PKCS12 文件： 将一个私钥和证书打包为 PKCS12 文件：
+
+openssl pkcs12 -export -out mykeystore.p12 -inkey private_key.pem -in certificate.pem -certfile ca_chain.pem
+
+//==================================
+//==================================
+
+使用 keytool 转换 JKS 为 PKCS12： 将 Java 密钥库（JKS）转换为 PKCS12 格式：
+keytool -importkeystore -srckeystore mykeystore.jks -destkeystore mykeystore.p12 -deststoretype pkcs12
+

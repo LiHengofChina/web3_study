@@ -1,0 +1,15 @@
+ 
+//====================== keytool -genkeypair  的旧命令
+//====================== keytool -genkeypair  的旧命令
+
+keytool -genkeypair ：生成一对密钥（即公钥和私钥）。
+		//keytool -genkey（已经过时）
+		
+
+keytool -importcert
+		//keytool -import（已经过时）
+
+keytool -exportcer
+		//keytool -export（已经过时）
+
+ 

@@ -1,0 +1,56 @@
+
+（1）检查版本
+	gpg --version
+		
+				看到类似的输出
+					Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+				这表示 GPG 支持椭圆曲线加密（ECDH, ECDSA, EDDSA）。
+
+
+//===================================================== 生成 ECC 密钥对的步骤
+//===================================================== 生成 ECC 密钥对的步骤
+
+（1）启用完整的密钥生成对话框
+
+gpg --expert --full-generate-key
+// 在你运行这个命令后，ECC 类型的选项将会显示出来。
+
+（2）选择密钥类型
+	Please select what kind of key you want:
+			请选择您要使用的密钥类型：
+			   (1) RSA 和 RSA （默认）
+			   (2) DSA 和 Elgamal
+			   (3) DSA（仅用于签名）
+			   (4) RSA（仅用于签名）
+			   (7) DSA（自定义用途）
+			   (8) RSA（自定义用途）
+			   (9) ECC 和 ECC   ************* 要选择这个
+			  (10) ECC（仅用于签名）
+			  (11) ECC（自定义用途）
+			  (13) 现存的密钥
+			  （14）卡中现有密钥
+			您的选择是？ 9
+
+
+（3）选择 ECC 曲线
+			请选择您想要使用的椭圆曲线：
+			   (1) Curve 25519	 ************* 要选择这个
+			   (3) NIST P-256
+			   (4) NIST P-384
+			   (5) NIST P-521
+			   (6) Brainpool P-256
+			   (7) Brainpool P-384
+			   (8) Brainpool P-512
+			   (9) secp256k1
+			您的选择是？ 1
+
+
+（4）继续完成密钥生成：
+
+
+（5）导出
+	gpg --armor --export 13688007165@139.com > publicKey.asc
+	gpg --armor --export-secret-keys 13688007165@139.com > privateKey.asc
+
+
+

@@ -1,0 +1,74 @@
+
+Python 的 cryptography 库也可以轻松生成 RSA 或 ECC 密钥对。
+
+//======================================================================= 安装 cryptography：
+//======================================================================= 安装 cryptography：
+
+	  //关闭VPN再执行
+
+	  pip install cryptography
+
+//======================================================================= RSA 算法
+//======================================================================= RSA 算法
+
+
+from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives import serialization
+
+# 生成RSA私钥
+private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=2048
+)
+
+# 导出私钥
+with open("private_key.pem", "wb") as f:
+    f.write(
+        private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.TraditionalOpenSSL,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+    )
+
+# 导出公钥
+public_key = private_key.public_key()
+with open("public_key.pem", "wb") as f:
+    f.write(
+        public_key.public_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+    )
+
+
+//======================================================================= ECC 算法
+//======================================================================= ECC 算法
+
+from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives import serialization
+
+# 生成ECC私钥
+private_key = ec.generate_private_key(ec.SECP256R1())
+
+# 导出私钥
+with open("ecc_private_key.pem", "wb") as f:
+    f.write(
+        private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.TraditionalOpenSSL,
+            encryption_algorithm=serialization.NoEncryption()
+        )
+    )
+
+# 导出公钥
+public_key = private_key.public_key()
+with open("ecc_public_key.pem", "wb") as f:
+    f.write(
+        public_key.public_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PublicFormat.SubjectPublicKeyInfo
+        )
+    )
+
+

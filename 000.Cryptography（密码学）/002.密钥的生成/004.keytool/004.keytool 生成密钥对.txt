@@ -1,0 +1,46 @@
+
+//======================================================== keytool 生成密钥对
+//======================================================== keytool 生成密钥对
+
+//======================（1）生成 RSA 密钥对并存储到密钥库（keystore）：
+//======================（1）生成 RSA 密钥对并存储到密钥库（keystore）：
+
+keytool -genkeypair -alias mykey -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 365
+
+			/**
+				生成了密钥同时保存在了 mykeystore.jks 库中
+				执行时需要输入：密钥库密码。
+			*/
+			/**
+			 -genkeypair：生成密钥对。
+			 -alias mykey：为密钥对指定别名。
+			 -keyalg RSA：指定密钥算法（这里是 RSA）。
+			 -keysize 2048：指定密钥长度（2048 位）。
+			 -keystore mykeystore.jks：密钥库的文件名称。
+			 -validity 365：证书的有效天数（365天）。
+			*/
+
+
+
+//======================（2）查看密钥库中的条目：
+//======================（2）查看密钥库中的条目：
+
+keytool -list -keystore mykeystore.jks
+
+//====================== （3）导出公钥证书（自签名证书）：
+//====================== （3）导出公钥证书（自签名证书）：
+
+将"密钥库"中的"指定别名的密钥对"的 公钥导出为 .cer 文件 或  .crt 文件
+
+keytool -exportcert -alias mykey -file mykey_public.cer -keystore mykeystore.jks
+keytool -exportcert -alias mykey -file mykey_public.crt -keystore mykeystore.jks
+
+			/**
+			-exportcert：导出证书（这里指的是公钥）。
+			-alias mykey：指定密钥对的别名（即你之前生成的密钥对）。
+			-file mykey_public.cer：导出为 .cer 文件（即 "公钥证书" ）。
+			-keystore mykeystore.jks：从 mykeystore.jks 密钥库中导出公钥。
+			*/
+
+
+
