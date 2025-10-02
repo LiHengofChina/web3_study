@@ -1,0 +1,33 @@
+
+//================================（1）OK钱包密码
+//================================（1）OK钱包密码
+
+Liheng520
+
+//================================（2）HD钱包
+//================================（2）HD钱包
+
+01   require
+02   option
+03   health
+04   mosquito
+05   purchase
+06   legend
+07   mad
+08   distance
+09   album
+10   dignity
+11   expire
+12   habit
+
+//================================ （3）私钥钱包（多个都能导入，原因不明、误导、不安全）
+//================================ （3）私钥钱包（多个都能导入，原因不明、误导、不安全）
+
+586RNGw9nBLdtneSQW8xenTTf8X9AGL8ye8YPBx642HM1KXkE1V7g7RhW9hbnfN48zTjPXvCEh3nAUxA5dBHNTu5
+586RNGw9nBLdtneSQW8xenTTf8X9AGL8ye8YPBx642HM1KXkE1V7g7RhW9hbnfN48zTjPXvCEh3nAUxA5dBHNTu6
+586RNGw9nBLdtneSQW8xenTTf8X9AGL8ye8YPBx642HM1KXkE1V7g7RhW9hbnfN48zTjPXvCEh3nAUxA5dBHNTu7
+586RNGw9nBLdtneSQW8xenTTf8X9AGL8ye8YPBx642HM1KXkE1V7g7RhW9hbnfN48zTjPXvCEh3nAUxA5dBHNTu9
+
+
+
+
