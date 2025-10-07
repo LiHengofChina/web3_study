@@ -148,8 +148,8 @@
 		它只显示凭证，它代表你插入的金额，
 
 	（9）查看收益要到网站上面。
-		Raydium → Portfolio → My Positions 查看「Fees Earned」
-	
+		Raydium → Portfolio Portfolio（我的投资组合） → My Positions（我的头寸） 查看「Fees Earned」
+
 	（10）取出头寸
 		在 "My Positions" 里，你会看到你当前的头寸（比如 SOL/USDC）。
 		点击那一条头寸右侧的 "Manage"（或图标🔧）按钮。
